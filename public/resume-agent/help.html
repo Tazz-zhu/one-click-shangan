@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%232d9d78%27/%3E%3Cstop offset=%271%27 stop-color=%27%234b7ef0%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%272%27 y=%272%27 width=%2760%27 height=%2760%27 rx=%2716%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Arial,Helvetica,sans-serif%27 font-size=%2720%27 font-weight=%27900%27 fill=%27%23fff%27 text-anchor=%27middle%27 letter-spacing=%27.5%27%3EOffer%3C/text%3E%3C/svg%3E">
+<title>使用说明 · 一键上岸</title>
+<style>
+  body { font-family: -apple-system,'PingFang SC','Microsoft YaHei',sans-serif; color:#222; background:#f7f8fa; margin:0; line-height:1.9; }
+  .wrap { max-width:780px; margin:0 auto; padding:24px 20px 48px; }
+  .top { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .top a { color:#2d9d78; text-decoration:none; font-size:14px; }
+  .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:28px 30px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .meta { color:#888; font-size:13px; margin:0 0 18px; }
+  h2 { font-size:17px; margin:24px 0 8px; color:#1f4e3f; }
+  p, li { font-size:14px; }
+  ul { padding-left:22px; }
+  code { background:#eef2f1; border-radius:4px; padding:1px 6px; font-size:13px; }
+  .tip { background:#eef7f3; border-left:3px solid #2d9d78; border-radius:6px; padding:10px 14px; font-size:13px; margin:12px 0; }
+  footer { text-align:center; color:#999; font-size:12px; margin-top:18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span></span><a href="index.html">← 返回一键上岸</a></div>
+  <div class="card">
+    <h1>使用说明</h1>
+    <p class="meta">一键上岸（AI 简历助手）· 纯前端本地版 · 无需登录，数据只保存在本机</p>
+
+    <h2>一、如何打开</h2>
+    <ul>
+      <li><b>最简单</b>：双击 <code>index.html</code>（推荐用最新版 Chrome / Edge 打开）。</li>
+      <li><b>本地服务</b>：在 <code>ai-resume-agent</code> 目录执行 <code>python -m http.server 8765 --directory .</code>，然后访问 <code>http://127.0.0.1:8765</code>。</li>
+    </ul>
+
+    <h2>二、六步使用流程</h2>
+    <ul>
+      <li><b>1 对话引导</b>：像聊天一样回答 AI 的问题，它会帮你挖掘课程设计、社团活动、实习里的亮点；不想对话可以直接「跳过」或「先看示例」。</li>
+      <li><b>2 智能生成</b>：在 A4 预览纸上直接编辑；右侧 AI 建议面板可一键采纳「表述优化 / 量化补充」。</li>
+      <li><b>3 模板排版</b>：11 套模板 + 主题色 + 字号 + 行距 + 照片，实时预览。</li>
+      <li><b>4 诊断优化</b>：六维评分 + 雷达图 + 问题清单，一键修复；另有「文字与格式体检」检查错别字、日期格式、口语化表达等。</li>
+      <li><b>5 岗位匹配</b>：粘贴 JD 自动分析匹配度与关键词差距（截图识别需配置 OCR，可手动粘贴文本）。</li>
+      <li><b>6 导出投递</b>：PDF（打印）、Word（真实 .docx）、分享网页（单文件 HTML）、ATS 纯文本（网申直接粘贴）、JSON 备份；多版本管理与投递台账。</li>
+    </ul>
+
+    <h2>三、数据与隐私</h2>
+    <ul>
+      <li>所有数据只保存在<b>当前浏览器本地（localStorage）</b>，不上传任何服务器，不需要注册登录。</li>
+      <li>清除浏览器网站数据 = 永久删除简历，请定期在「导出投递 → 数据备份 → 导出备份」保存 JSON。</li>
+      <li>换电脑 / 换浏览器：先在旧设备「导出备份」，再在新设备「导入备份」即可迁移。</li>
+    </ul>
+
+    <h2>四、如何分享给别人</h2>
+    <ul>
+      <li><b>分享整个工具</b>：把 <code>ai-resume-agent</code> 文件夹压缩打包发给对方，解压后双击 <code>index.html</code> 即可使用，无需安装任何软件。</li>
+      <li><b>分享单份简历</b>：用「分享简历网页」导出单文件 HTML，或导出 PDF / Word 发给招聘方。</li>
+    </ul>
+
+    <h2>五、常见问题</h2>
+    <ul>
+      <li><b>打开是空白页？</b> 请使用最新版 Chrome / Edge，并确认未禁用 localStorage。</li>
+      <li><b>AI 为什么没有调用大模型？</b> 纯前端版默认使用内置 AI 引擎，离线也能「一键生成」；如需真实大模型，需自备 API 代理并在代码中开启。</li>
+      <li><b>换设备数据没了？</b> 数据在浏览器本地，请用「导出备份 / 导入备份」迁移。</li>
+    </ul>
+  </div>
+  <footer>一键上岸 · 纯前端本地版 · 数据仅保存在本地浏览器</footer>
+</div>
+</body>
+</html>

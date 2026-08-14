@@ -1,0 +1,137 @@
+[
+  {
+    "question": "请做一个简单的自我介绍。",
+    "type": "行为面试",
+    "category": "通用",
+    "difficulty": "基础",
+    "tags": ["自我介绍", "通用", "开场"],
+    "examiner_intent": "考察表达能力和自我认知，建立第一印象",
+    "follow_up_hints": ["为什么选择这个岗位？", "你的职业规划是什么？"]
+  },
+  {
+    "question": "你最大的优点和缺点分别是什么？",
+    "type": "行为面试",
+    "category": "通用",
+    "difficulty": "基础",
+    "tags": ["自我认知", "通用"],
+    "examiner_intent": "考察自我认知和诚实度，缺点是否会影响工作",
+    "follow_up_hints": ["这个缺点在工作中给你带来过什么困扰？", "你是怎么弥补的？"]
+  },
+  {
+    "question": "你为什么选择我们公司/这个岗位？",
+    "type": "行为面试",
+    "category": "通用",
+    "difficulty": "基础",
+    "tags": ["求职动机", "通用"],
+    "examiner_intent": "考察对公司/岗位的了解程度和求职诚意",
+    "follow_up_hints": ["你对我们的业务有什么了解？", "你觉得自己能为团队带来什么？"]
+  },
+  {
+    "question": "描述一次你解决复杂问题的经历。",
+    "type": "行为面试",
+    "category": "问题解决",
+    "difficulty": "中等",
+    "tags": ["问题解决", "STAR", "通用"],
+    "examiner_intent": "考察分析问题和解决问题的能力",
+    "follow_up_hints": ["你用什么方法分析问题的？", "有没有考虑过其他方案？"]
+  },
+  {
+    "question": "举一个你推动跨部门/跨团队协作的例子。",
+    "type": "行为面试",
+    "category": "沟通协作",
+    "difficulty": "中等",
+    "tags": ["跨部门协作", "沟通", "推动力"],
+    "examiner_intent": "考察沟通协调能力和项目推动力",
+    "follow_up_hints": ["最大的阻力是什么？", "你怎么说服不同立场的人？"]
+  },
+  {
+    "question": "描述一次你面对失败或挫折的经历，你是如何应对的？",
+    "type": "行为面试",
+    "category": "抗压能力",
+    "difficulty": "中等",
+    "tags": ["失败", "抗压", "成长"],
+    "examiner_intent": "考察抗压能力、复盘能力和成长心态",
+    "follow_up_hints": ["你从中学到了什么？", "如果再遇到类似情况你会怎么做？"]
+  },
+  {
+    "question": "你的职业规划是什么？（3-5年）",
+    "type": "行为面试",
+    "category": "通用",
+    "difficulty": "基础",
+    "tags": ["职业规划", "通用"],
+    "examiner_intent": "考察职业目标清晰度和与岗位的匹配度",
+    "follow_up_hints": ["你打算如何实现这个规划？", "这个岗位如何帮助你实现目标？"]
+  },
+  {
+    "question": "如果让你从0到1做一个产品/项目，你会怎么做？",
+    "type": "专业能力",
+    "category": "产品思维",
+    "difficulty": "较难",
+    "tags": ["产品思维", "项目规划", "从0到1"],
+    "examiner_intent": "考察产品规划能力和系统性思维",
+    "follow_up_hints": ["你怎么验证需求？", "MVP阶段你优先做什么？"]
+  },
+  {
+    "question": "你怎么衡量自己工作的价值/效果？",
+    "type": "专业能力",
+    "category": "数据思维",
+    "difficulty": "中等",
+    "tags": ["数据思维", "量化", "ROI"],
+    "examiner_intent": "考察数据意识和结果导向思维",
+    "follow_up_hints": ["有没有具体的指标可以分享？", "如果数据不理想你会怎么做？"]
+  },
+  {
+    "question": "你怎么看待AI在行业中的应用？举例说明。",
+    "type": "专业能力",
+    "category": "行业认知",
+    "difficulty": "中等",
+    "tags": ["AI", "行业认知", "前瞻性"],
+    "examiner_intent": "考察行业视野和对新技术的敏感度",
+    "follow_up_hints": ["你认为AI会替代你的岗位吗？", "你用过哪些AI工具？"]
+  },
+  {
+    "question": "你最自豪的一个项目是什么？为什么？",
+    "type": "项目深挖",
+    "category": "项目经验",
+    "difficulty": "中等",
+    "tags": ["项目经验", "成就", "STAR"],
+    "examiner_intent": "考察项目深度和候选人对自身贡献的认知",
+    "follow_up_hints": ["你的角色和具体贡献是什么？", "如果重来一次你会改进什么？"]
+  },
+  {
+    "question": "你怎么处理优先级冲突？比如多个紧急需求同时出现。",
+    "type": "行为面试",
+    "category": "时间管理",
+    "difficulty": "中等",
+    "tags": ["优先级", "时间管理", "决策"],
+    "examiner_intent": "考察优先级判断能力和压力下的决策力",
+    "follow_up_hints": ["你是怎么和利益相关方沟通的？", "有没有判断失误的情况？"]
+  },
+  {
+    "question": "你最近学到了什么新知识/技能？怎么学的？",
+    "type": "行为面试",
+    "category": "学习能力",
+    "difficulty": "基础",
+    "tags": ["学习能力", "成长", "好奇心"],
+    "examiner_intent": "考察学习能力和主动成长的意愿",
+    "follow_up_hints": ["你是怎么应用这个新技能的？", "学习过程中遇到什么困难？"]
+  },
+  {
+    "question": "你怎么看待加班？",
+    "type": "压力测试",
+    "category": "工作态度",
+    "difficulty": "基础",
+    "tags": ["加班", "工作态度", "价值观"],
+    "examiner_intent": "考察工作态度和对工作节奏的接受度",
+    "follow_up_hints": ["你认为什么情况需要加班？", "你怎么平衡工作和生活？"]
+  },
+  {
+    "question": "你有什么想问我们的吗？",
+    "type": "HR面",
+    "category": "通用",
+    "difficulty": "基础",
+    "tags": ["反问", "通用", "面试结束"],
+    "examiner_intent": "考察候选人对公司和岗位的真实兴趣",
+    "follow_up_hints": []
+  }
+]

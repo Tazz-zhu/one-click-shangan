@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>群面知识库</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #fff; }
+  .loading { display: flex; align-items: center; justify-content: center; height: 100%; color: #999; font-size: 14px; }
+  .loading.hidden { display: none; }
+  iframe { width: 100%; height: 100%; border: none; }
+  .error { display: none; align-items: center; justify-content: center; height: 100%; flex-direction: column; gap: 1rem; color: #888; }
+  .error.show { display: flex; }
+  .error a { color: #6366f1; text-decoration: none; }
+  .error a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="loading" id="loading">正在加载群面知识库...</div>
+<div class="error" id="error">
+  <p>⚠️ 无法加载飞书知识库</p>
+  <a href="https://scnru07xq1cu.feishu.cn/wiki/WtHkwLFXciFtYEky1Chc6N5jnmg" target="_blank">在浏览器中打开 →</a>
+</div>
+<iframe id="kb-iframe" src="https://scnru07xq1cu.feishu.cn/wiki/WtHkwLFXciFtYEky1Chc6N5jnmg" style="display:none;" onload="onIframeLoad()" onerror="onIframeError()"></iframe>
+<script>
+  function onIframeLoad() {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('kb-iframe').style.display = '';
+  }
+  function onIframeError() {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('error').classList.add('show');
+  }
+  // 10秒超时
+  setTimeout(() => {
+    const loading = document.getElementById('loading');
+    if (!loading.classList.contains('hidden')) {
+      loading.classList.add('hidden');
+      document.getElementById('error').classList.add('show');
+    }
+  }, 10000);
+</script>
+</body>
+</html>

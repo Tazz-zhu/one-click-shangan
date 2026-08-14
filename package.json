@@ -1,0 +1,111 @@
+{
+    "name":  "one-click-shangan",
+    "version":  "1.9.0",
+    "description":  "一键上岸 - 简历助手 + 面试助手（AI押题/模拟面试）",
+    "author":  "Tazz-zhu",
+    "main":  "server.js",
+    "engines":  {
+                    "node":  "\u003e=18"
+                },
+    "scripts":  {
+                    "start":  "node server.js",
+                    "dev":  "node --watch server.js",
+                    "electron":  "electron electron/main.js",
+                    "build:win":  "electron-builder --win",
+                    "build:mac":  "electron-builder --mac",
+                    "build:linux":  "electron-builder --linux",
+                    "pack":  "electron-builder --dir",
+                    "test:e2e":  "node tests/jobseeker.e2e.mjs"
+                },
+    "dependencies":  {
+                         "bcryptjs":  "^2.4.3",
+                         "docx":  "^9.7.1",
+                         "dotenv":  "^16.4.0",
+                         "express":  "^4.21.0",
+                         "jsonwebtoken":  "^9.0.2",
+                         "mammoth":  "^1.12.0",
+                         "multer":  "^2.2.0",
+                         "openai":  "^4.73.0",
+                         "pdf-parse":  "^2.4.5",
+                         "tesseract.js":  "^5.1.1"
+                     },
+    "devDependencies":  {
+                            "@electron/notarize":  "^3.1.1",
+                            "electron":  "^33.3.1",
+                            "electron-builder":  "^25.1.8"
+                        },
+    "build":  {
+                  "appId":  "com.yijianshangan.app",
+                  "productName":  "一键上岸",
+                  "npmRebuild":  false,
+                  "directories":  {
+                                      "output":  "release"
+                                  },
+                  "files":  [
+                                "electron/**/*",
+                                "server.js",
+                                "package.json",
+                                "package-lock.json",
+                                "public/**/*",
+                                "chatflow/**/*",
+                                "knowledge/**/*",
+                                "ai-provider-kit/**/*",
+                                "node_modules/**/*",
+                                "!.data",
+                                "!.local",
+                                "!logs",
+                                "!.env",
+                                "!*.zip"
+                            ],
+                  "extraResources":  [
+
+                                     ],
+                  "win":  {
+                              "target":  [
+                                             {
+                                                 "target":  "nsis",
+                                                 "arch":  [
+                                                              "x64"
+                                                          ]
+                                             },
+                                             {
+                                                 "target":  "portable",
+                                                 "arch":  [
+                                                              "x64"
+                                                          ]
+                                             }
+                                         ],
+                              "icon":  "electron/icon.png",
+                              "sign":  null,
+                              "signAndEditExecutable":  false
+                          },
+                  "nsis":  {
+                               "oneClick":  false,
+                               "perMachine":  false,
+                               "allowToChangeInstallationDirectory":  true,
+                               "createDesktopShortcut":  true,
+                               "createStartMenuShortcut":  true,
+                               "shortcutName":  "一键上岸",
+                               "installerIcon":  "electron/icon.ico",
+                               "uninstallerIcon":  "electron/icon.ico",
+                               "installerHeaderIcon":  "electron/icon.ico",
+                               "license":  "LICENSE"
+                           },
+                  "mac":  {
+                              "target":  [
+                                             "dmg"
+                                         ],
+                              "icon":  "electron/icon.png",
+                              "category":  "public.app-category.productivity",
+                              "hardenedRuntime":  false,
+                              "identity":  null
+                          },
+                  "linux":  {
+                                "target":  [
+                                               "AppImage"
+                                           ],
+                                "icon":  "electron/icon.png",
+                                "category":  "Office"
+                            }
+              }
+}
