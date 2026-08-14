@@ -15,6 +15,17 @@
 
 ---
 
+## 📸 界面预览
+
+| | |
+|---|---|
+| ![仪表盘首页](assets/screenshots/shot-1-dashboard.png) | ![简历助手（内嵌）](assets/screenshots/shot-2-resume-builder.png) |
+| ![导出投递 · 一键同步](assets/screenshots/shot-3-resume-export.png) | ![分析 & 押题 · 简历自动导入](assets/screenshots/shot-4-analyze-imported.png) |
+
+![全真模拟面试](assets/screenshots/shot-5-interview.png)
+
+---
+
 ## 🧭 一键上岸：简历 + 面试 一体化
 
 本仓库已把 **一键上岸（AI 简历助手）** 整合为内置的「📄 简历助手」Tab，与面试功能组成完整求职 Agent：
@@ -59,6 +70,18 @@ npm run electron
 # 热重载开发模式
 npm run dev
 ```
+
+---
+
+## 🚀 使用流程
+
+1. **📄 写简历** — 打开「简历助手」，AI 对话引导 30 分钟产出一份 ATS 友好简历（支持模板排版、六维诊断、PDF/Word/HTML 导出）
+2. **⚡ 一键同步** — 在简历助手点「同步到面试助手」，简历 ATS 纯文本和 JD 自动带入面试助手
+3. **🔍 押题分析** — 在「分析 & 押题」确认 / 粘贴 JD，AI 生成五类题型押题 + 差距分析
+4. **🎤 模拟面试** — 全真模拟 / 单题练习 / 群面模拟，AI 逐题五维评分
+5. **🏆 冲刺 Offer** — 面试复盘、错题集、备考方案持续迭代
+
+> 简历 → 面试全程数据本机流转（localStorage + postMessage），无需重复粘贴、不上传云端。
 
 ---
 
@@ -147,6 +170,18 @@ Space 暂停 / 1-5 评分 / Enter 提交 / Esc 关闭。
 │       DeepSeek / OpenAI / 百炼 / 硅基 / ...       │
 └─────────────────────────────────────────────────┘
 ```
+
+---
+
+## 🛠 技术栈
+
+| 层 | 技术 |
+|---|---|
+| 前端 | 原生 HTML / CSS / JavaScript SPA（零框架依赖）+ ECharts 图表 |
+| 后端 | Node.js + Express（本地服务，可选 Electron 桌面端） |
+| AI | 多供应商接入：DeepSeek / OpenAI / 阿里百炼 / 硅基流动（OpenAI 兼容网关） |
+| 存储 | 本地 JSON 文件 + 浏览器 localStorage（无数据库、无云端） |
+| 测试 | Playwright 端到端 + 单元测试（132 + 20 + 11 项） |
 
 ---
 
