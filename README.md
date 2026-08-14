@@ -1,17 +1,63 @@
 <div align="center">
 
-# 🎯 一键上岸（JobSeeker Agent）
+# 🎯 一键上岸（One-Click Shang’an）
 
-### 简历助手 + 面试助手 · AI 驱动的求职全流程
+### AI 求职 Agent · 简历助手 + 面试助手
 
-[![Release](https://img.shields.io/github/v/release/Tazz-zhu/one-click-shangan?style=flat-square&color=6366f1)](https://github.com/Tazz-zhu/one-click-shangan/releases)
-[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
-[![Electron](https://img.shields.io/badge/Electron-33.3-blue?style=flat-square&logo=electron)](https://electronjs.org)
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=nodedotjs)](https://nodejs.org)
+**写简历 → AI 押题 → 全真模拟面试 → 简历优化 → 拿 Offer**
 
-**输入 JD + 简历 → AI 精准押题、面经采集、差距分析、模拟面试、简历优化**
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat-square&logo=express)](https://expressjs.com)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-f7df1e?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+[![ECharts](https://img.shields.io/badge/ECharts-5.x-AA344D?style=flat-square&logo=apacheecharts)](https://echarts.apache.org)
+[![Electron](https://img.shields.io/badge/Electron-33.x-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org)
+[![AI](https://img.shields.io/badge/AI-DeepSeek%20%7C%20OpenAI%20%7C%20Qwen-4f46e5?style=flat-square&logo=openai&logoColor=white)](#-系统架构)
+[![Tests](https://img.shields.io/badge/Tests-163%20Passed-2EAD33?style=flat-square&logo=playwright&logoColor=white)](#-实测结果)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)](LICENSE)
 
 </div>
+
+---
+
+## 📑 目录
+
+- [✨ 功能特性](#-功能特性)
+- [📸 界面预览](#-界面预览)
+- [🏗️ 系统架构](#️-系统架构)
+- [🚀 快速开始](#-快速开始)
+- [🗂️ 项目结构](#️-项目结构)
+- [🧪 实测结果](#-实测结果)
+- [🛠 技术栈](#-技术栈)
+- [🔒 数据与隐私](#-数据与隐私)
+- [📝 更新日志](#-更新日志)
+- [📄 License](#-license)
+
+---
+
+## ✨ 功能特性
+
+### 📄 简历助手（纯前端本地版）
+
+- 🤖 **AI 对话式引导**：像学长一样提问，30 分钟挖掘经历亮点，自动生成专业简历
+- 🎨 **11 套模板 + 实时排版**：主色调 / 字号 / 行距 / 照片开关，自动检测单页溢出
+- 🩺 **六维诊断**：内容完整性 / 表述专业度 / 量化程度 / ATS 兼容 / 岗位匹配 / 排版规范
+- 📤 **多格式导出**：PDF / Word（真实 .docx）/ 分享网页 / ATS 纯文本 / JSON 备份
+- 🔌 **零依赖可用**：内置确定性 AI 引擎，无需服务器与 API Key
+
+### 🎯 面试助手（AI 押题与模拟面试官）
+
+- 🔍 **分析 & 押题**：JD 解析 → 简历解析 → 差距分析 → 五类题型并行生成（支持 Boss直聘 / 51job 链接扒取、快速模式）
+- 💪 **单题练习**：五维深度评分、逐句点评、AI 标准答案、话术库收藏
+- 🎤 **全真模拟面试**：多阶段追问 + 五维雷达图 + 逐题点评报告
+- 👥 **群面模拟**：无领导小组讨论，3 位 AI 候选人角色扮演
+- 📡 **面经采集**：小红书面经搜索 + OCR + LLM 结构化提取
+- 🎯 **专项训练 / 错题集 / 备考方案 / 公司调研 / 面试复盘**
+- 📊 **仪表盘**：准备度评分、练习热力图、雷达图、题型覆盖饼图
+
+### 🔗 简历 → 面试 一键贯通
+
+- 简历助手与面试助手**同源同域**运行，简历 ATS 文本 + JD 一键同步到「分析 & 押题」
+- 数据经 `localStorage + postMessage` 本机流转，**无需重复粘贴、不上传云端**
 
 ---
 
@@ -26,149 +72,101 @@
 
 ---
 
-## 🧭 一键上岸：简历 + 面试 一体化
+## 🏗️ 系统架构
 
-本仓库已把 **一键上岸（AI 简历助手）** 整合为内置的「📄 简历助手」Tab，与面试功能组成完整求职 Agent：
+```mermaid
+flowchart TB
+    subgraph Browser["浏览器（localhost:3456）"]
+        R["📄 简历助手（iframe）"]
+        I["🎯 面试助手（功能 Tab）"]
+        R -- "ATS 简历 + JD<br/>localStorage / postMessage" --> I
+    end
 
-````text
-写简历（简历助手） → 一键同步 → 粘贴/确认 JD（分析 & 押题） → AI 押题 / 模拟面试 / 简历优化
-`
-
-### 数据打通（简历 → 面试）
-
-- 简历助手位于 public/resume-agent/（纯前端，与原项目一致，数据仍只存浏览器 localStorage）；
-- 在简历助手任意页面点击 **「⚡ 同步到面试助手」**（导出页/嵌入横幅）：
-  - 自动把简历转成 **ATS 纯文本** 并携带你填写的 JD，写入共享键 jobseeker-bridge-v1；
-  - 嵌入模式下还会通过 postMessage 通知父页面，自动切到「分析 & 押题」并填入「我的简历 / 岗位JD」输入框；
-- 在「分析 & 押题」页也可点 **「📥 从简历助手导入」** 手动拉取最近一次同步的简历；
-- 简历助手源码更新后，运行 powershell -ExecutionPolicy Bypass -File scripts\sync-resume-agent.ps1 即可同步到 public/resume-agent/。
+    I --> API["Express 本地服务<br/>65+ REST API"]
+    API --> Engine["chatflow AI 引擎<br/>prompts / 流水线 / 面经采集"]
+    Engine --> LLM["LLM 网关<br/>DeepSeek / OpenAI / 百炼 / 硅基流动"]
+    API --> DB[("本地数据存储<br/>.data JSON + .local 配置")]
+    R --> LS[("浏览器 localStorage<br/>简历 / 桥接数据")]
+```
 
 ---
 
-## 📥 快速开始
+## 🚀 快速开始
 
-### 桌面客户端（推荐）
+### 环境要求
 
-👉 **[下载最新版](https://github.com/Tazz-zhu/one-click-shangan/releases/latest)** → 解压 → 双击 `一键上岸.exe`
+- [Node.js](https://nodejs.org) ≥ 18
+- Chrome / Edge 浏览器（推荐最新版）
 
-> 💡 首次启动请在 ⚙️ 设置中配置 AI 供应商（DeepSeek / OpenAI API Key）
-
-### 源码运行
+### 安装与启动
 
 ```bash
 git clone https://github.com/Tazz-zhu/one-click-shangan.git
 cd one-click-shangan
 npm install
 npm start
-# → 浏览器打开 http://localhost:3456（导航栏含「📄 简历助手」Tab，即整合后的一键上岸）
+# 浏览器打开 http://localhost:3456
 ```
+
+### Windows 一键启动
+
+```powershell
+powershell -ExecutionPolicy Bypass -File start.ps1
+```
+
+### 首次使用
+
+1. 打开「📄 简历助手」，完成一份 ATS 友好简历
+2. 点「⚡ 同步到面试助手」，简历与 JD 自动带入
+3. 在「分析 & 押题」确认 / 粘贴 JD 后点「开始分析」
+4. 在 ⚙️ 设置中配置 AI 供应商（DeepSeek / OpenAI / 阿里百炼 / 硅基流动）
+
+---
+
+## 🗂️ 项目结构
+
+```
+one-click-shangan/
+├── server.js                 # Express 主服务（65+ API 路由）
+├── chatflow/                 # AI 引擎核心
+│   ├── engine.js             # 分析流水线编排
+│   ├── prompts.js            # 20+ System Prompt 模板
+│   ├── ai-provider.js        # AI 供应商桥接（LLM 网关）
+│   ├── resume-parser.js      # 简历文件解析
+│   ├── export-docx.js        # DOCX 导出
+│   └── nodes/                # 面经采集 / 公司调研 / OpenCLI
+├── public/                   # 前端 SPA
+│   ├── index.html            # 主页面（简历助手 Tab + 11 个功能 Tab）
+│   ├── app.js / style.css    # 前端逻辑与亮暗双主题样式
+│   ├── resume-agent/         # 内嵌「一键Offer 简历助手」（纯前端）
+│   └── echarts.min.js        # ECharts 图表
+├── knowledge/                # 知识库（行为面试 / 群面 / STAR 框架）
+├── electron/                 # Electron 桌面端（可选打包）
+├── scripts/                  # 工具脚本（同步简历助手源码）
+├── assets/screenshots/       # README 界面截图
+├── tests/                    # 端到端 / 贯通测试（Playwright）
+└── .data/                    # 本地数据（运行时生成，不入库）
+```
+
+---
+
+## 🧪 实测结果
+
+| 测试套件 | 覆盖内容 | 结果 |
+|---|---|---|
+| 简历助手 单元 + 冒烟测试 | 对话引导 / 生成 / 模板 / 诊断 / JD / 导出 / 移动端 | ✅ **132/132** |
+| 集成端到端测试 | 品牌 / Tab / iframe / 一键同步 / 手动导入 / 独立模式 | ✅ **20/20** |
+| 简历 → 面试贯通测试 | 真实点击流：载入示例 → 同步 → 自动填入 | ✅ **11/11** |
 
 ```bash
-# 以 Electron 桌面客户端运行
-npm run electron
+# 简历助手测试（132 项）
+cd ai-resume-agent && npm install && npm test
 
-# 热重载开发模式
-npm run dev
-```
+# 集成端到端测试（20 项）
+cd interview-prep && npm run test:e2e
 
----
-
-## 🚀 使用流程
-
-1. **📄 写简历** — 打开「简历助手」，AI 对话引导 30 分钟产出一份 ATS 友好简历（支持模板排版、六维诊断、PDF/Word/HTML 导出）
-2. **⚡ 一键同步** — 在简历助手点「同步到面试助手」，简历 ATS 纯文本和 JD 自动带入面试助手
-3. **🔍 押题分析** — 在「分析 & 押题」确认 / 粘贴 JD，AI 生成五类题型押题 + 差距分析
-4. **🎤 模拟面试** — 全真模拟 / 单题练习 / 群面模拟，AI 逐题五维评分
-5. **🏆 冲刺 Offer** — 面试复盘、错题集、备考方案持续迭代
-
-> 简历 → 面试全程数据本机流转（localStorage + postMessage），无需重复粘贴、不上传云端。
-
----
-
-## ✨ 功能全景
-
-### 🔍 分析 & 押题
-粘贴 JD 和简历，AI 自动完成 **JD 解析 → 简历解析 → 差距分析 → 并行押题生成**（行为面试 / 专业能力 / 项目深挖 / 压力测试 / HR 面，共 5 类题型）。支持 Boss直聘 / 51job 链接一键扒取、JD 智能排版。快速模式下仅生成 3 类核心题型，速度提升约 5 倍。
-
-### 💪 单题练习
-从押题清单选题作答，AI **五维深度评分**（STAR 完整性 / 量化程度 / 岗位匹配 / 表达结构 / 亮点突出），逐句点评标注优缺点，给出基于简历的改进版参考。支持 **AI 追问练习**、**AI 标准答案参考**、**纳入练习记录选项**（用户自主选择）。
-
-### 💡 通用题库
-20 道高频行为面试题，覆盖 **自我认知 / 职业规划 / 行为面试 / 压力应对 / 价值观** 五大分类。每道题都配有回答框架和危险区提示，AI 可结合你的简历和 JD **一键生成标准化回答**。
-
-### 📡 面经采集
-独立搜索小红书面经，AI 提取真实面试题。**双通道采集**（文字提取 + 截图 OCR），**三阶段 LLM 结构化**（粗提取 → 分类标签 → 增强输出），SSE 实时进度。支持手动粘贴小红书链接批量抓取。**面经整合分析**：跨公司/跨岗位对比，LLM 深度分析面试趋势。
-
-### 🎤 全真模拟面试
-AI 扮演面试官，从自我介绍开始多轮追问。**智能追问**不充分回答，多阶段面试（行为 → 专业 → 项目 → 压力）。结束后自动生成 **五维雷达图 + 逐题点评报告**，面试历史回顾记录每次得分。
-
-### 👥 群面模拟
-**无领导小组讨论**模拟，AI 根据 JD 生成讨论题目（4 种题型），3 位 AI 候选人（激进型 / 协作型 / 分析型）各具性格，结束后生成 **五维度评估报告 + 角色分析**。
-
-### 🎯 专项训练
-题型过滤 + 任务卡 + 计时器（30s 准备 + 120s 作答）+ 历史记录 + ECharts 趋势图。支持语音输入。
-
-### 📄 简历优化
-AI 逐段分析简历，对标 JD 给出逐句优化建议。**原文 vs 优化后左右对照**，**全文化化**生成可直接投递的简历，**阶段指示器**实时显示优化进度。自动生成自我介绍脚本（支持自定义 Prompt 追加个性化要求）。
-
-### 🔬 公司调研
-输入公司名，AI 搜索并生成公司知识图谱（业务/产品/文化/面试风格），调研历史自动保存。
-
-### 📊 仪表盘
-面试准备度评分（6 维度加权）、练习概览卡片、五维雷达图、题型覆盖饼图、练习日历热力图、快速复习卡片（翻转查看答案要点）、面试备战计划（倒计时 + 连续打卡 + 每日完成度）。
-
-### 📝 错题集
-分数 <60 自动标记，按题型 / 来源筛选，一键跳转重新练习。
-
-### 💬 话术库
-高分回答自动收藏，标签分类，DOCX 一键导出。
-
-### 📥 导出
-押题清单 / 练习历史 / 面试报告 / 话术库 / 面经库 → Markdown + DOCX 双格式导出。
-
-### 🌙 暗色模式
-跟随系统 + 手动切换 + 定时自动切换（6:00-18:00 浅色，其他时段深色），偏好记忆本地。
-
-### ⌨️ 键盘快捷键
-Space 暂停 / 1-5 评分 / Enter 提交 / Esc 关闭。
-
----
-
-## 🔌 支持的 LLM
-
-| 供应商 | 模型示例 | 说明 |
-|--------|---------|------|
-| DeepSeek | deepseek-chat, deepseek-reasoner | 推荐，性价比最高 |
-| OpenAI | gpt-4o, gpt-4o-mini | 效果最佳 |
-| 阿里百炼 | qwen-turbo, qwen-plus, qwen-max | 国产推荐 |
-| 硅基流动 | Qwen, DeepSeek, GLM 系列 | 多模型聚合 |
-| 豆包 (Doubao) | doubao-pro-32k | 字节跳动 |
-| Ollama (本地) | llama3, qwen2.5, mistral | 完全离线 |
-| 自定义 | 任何 OpenAI-compatible API | 灵活接入 |
-
-在 ⚙️ 设置中一键添加 / 切换 / 测试连接，支持多供应商并行管理。
-
----
-
-## 🏗️ 技术架构
-
-```
-┌─────────────────────────────────────────────────┐
-│               Electron 桌面客户端                 │
-│           NSIS 安装包 / portable 便携版           │
-├─────────────────────────────────────────────────┤
-│            Express Server (端口 3456)             │
-│       SSE 流式 · 65 个 API 路由 · 会话管理        │
-├────────────┬──────────────┬─────────────────────┤
-│  Chatflow  │   LLM Client  │      OpenCLI        │
-│  分析引擎   │   双后端切换   │   JD扒取 / 面经搜索  │
-│  Prompt    │  ai-provider  │   小红书 / Web       │
-│  编排管理   │  / standalone │   浏览器自动化       │
-├────────────┴──────────────┴─────────────────────┤
-│           AI Provider Kit (端口 8787)             │
-│        OpenAI-compatible 统一网关                 │
-│       DeepSeek / OpenAI / 百炼 / 硅基 / ...       │
-└─────────────────────────────────────────────────┘
+# 简历 → 面试贯通测试（11 项）
+cd interview-prep && node tests/bridge-live.mjs
 ```
 
 ---
@@ -181,73 +179,22 @@ Space 暂停 / 1-5 评分 / Enter 提交 / Esc 关闭。
 | 后端 | Node.js + Express（本地服务，可选 Electron 桌面端） |
 | AI | 多供应商接入：DeepSeek / OpenAI / 阿里百炼 / 硅基流动（OpenAI 兼容网关） |
 | 存储 | 本地 JSON 文件 + 浏览器 localStorage（无数据库、无云端） |
-| 测试 | Playwright 端到端 + 单元测试（132 + 20 + 11 项） |
+| 测试 | Playwright 端到端 + 单元测试（163 项通过） |
 
 ---
 
-## 📁 项目结构
+## 🔒 数据与隐私
 
-```
-一键上岸/
-├── server.js              # Express 主服务（65 个 API 路由）
-├── electron/              # Electron 桌面客户端
-│   ├── main.js            # 主进程（窗口管理 + 延迟启动网关）
-│   └── preload.js         # 预加载脚本
-├── chatflow/              # AI 引擎核心
-│   ├── engine.js          # 分析流水线编排
-│   ├── llm-client.js      # LLM 统一调用（双后端）
-│   ├── prompts.js         # 20+ 个 System Prompt 模板
-│   ├── ai-provider.js     # AI 供应商连接管理
-│   ├── standalone-llm.js  # 独立 LLM 降级模式
-│   ├── resume-parser.js   # 简历文件解析
-│   ├── export-docx.js     # DOCX 文档生成
-│   └── nodes/
-│       ├── mianjing.js     # 面经采集（搜索+OCR+LLM）
-│       ├── company-research.js  # 公司调研
-│       └── opencli-setup.js     # OpenCLI 配置
-├── public/                # 前端 SPA
-│   ├── index.html         # 主页面（11 个功能 Tab + 📄 简历助手 Tab）
-│   ├── resume-agent/      # 内置「一键上岸 简历助手」（纯前端，见 scripts/sync-resume-agent.ps1）
-│   ├── app.js             # 前端逻辑（~5000 行）
-│   ├── style.css          # 样式（亮色/暗色双主题）
-│   ├── echarts.min.js     # ECharts 图表
-│   └── group-kb-embed.html # 群面知识库嵌入页
-├── scripts/              # 工具脚本（sync-resume-agent.ps1：同步简历助手源码）
-├── knowledge/             # 知识库（JSON）
-│   ├── behavioral-questions.json  # 20 道通用行为面试题
-│   ├── group-interview.json       # 群面题库
-│   ├── star-framework.json        # STAR 框架
-│   └── general-qa.json            # 通用问答
-├── .data/                 # 本地数据存储（无数据库依赖）
-├── logs/                  # 错误日志
-└── README.md              # 本文件
-```
-
----
-
-## 📦 打包发布
-
-```bash
-# 打包 Windows（NSIS 安装包 + portable 便携版）
-npm run build:win
-
-# 打包 macOS
-npm run build:mac
-
-# 打包 Linux
-npm run build:linux
-
-# 仅打包目录（不生成安装包，调试用）
-npm run pack
-```
-
-输出目录：`release/`
+- 简历、JD、面试记录、账号数据**全部保存在本机**：服务器写入 `.data/` / `.local/` JSON 文件，浏览器数据写入 localStorage
+- 无云端数据库、无埋点上报；`.data` / `.local` / `logs` 均被 `.gitignore` 排除，不会上传到仓库
+- 删除 `interview-prep/.data` 与 `.local` 即可彻底清除服务端本地数据
 
 ---
 
 ## 📝 更新日志
 
 ### v1.0.0 (2026-08-14)
+
 - 🎯 首个版本：AI 求职 Agent（简历助手 + 面试助手）
 - 📄 简历助手：AI 对话引导写简历、模板排版、六维诊断、岗位匹配、PDF / Word / HTML / ATS 导出
 - 🔗 简历 → 面试一键同步：ATS 纯文本 + JD 自动带入「分析 & 押题」
@@ -260,9 +207,3 @@ npm run pack
 ## 📄 License
 
 MIT © [Tazz-zhu](https://github.com/Tazz-zhu)
-
----
-
-<div align="center">
-<sub>Built with ❤️ for job seekers everywhere</sub>
-</div>
